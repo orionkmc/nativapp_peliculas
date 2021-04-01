@@ -1,8 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
+import Spinner from "../General/Spinner";
+import Fatal from "../General/Fatal";
 import "../../css/card.css";
 
-const Tabla = ({ films }) => {
+const Tabla = ({ cargando, error, films }) => {
+  if (cargando) {
+    return <Spinner />;
+  }
+  if (error) {
+    return <Fatal msj={error} />;
+  }
+  if (films.length === 0) {
+    return <h1>Escribe en el filtro para realizar una busqueda.</h1>;
+  }
   return (
     <>
       <div className="support-grid"></div>

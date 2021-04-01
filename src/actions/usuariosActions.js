@@ -7,7 +7,8 @@ export const traerTodos = (form) => async (dispatch) => {
   });
 
   try {
-    const API = "http://www.omdbapi.com/?t=&apikey=5eec5adc&";
+    const API_KEY = "5eec5adc";
+    const API = `http://www.omdbapi.com/?t=&apikey=${API_KEY}&`;
     const respuesta = await axios.get(
       `${API}s=${form["title"]}&y=${form["year"]}&type=${form["type"]}&page=${form["page"]}`
     );
@@ -16,7 +17,6 @@ export const traerTodos = (form) => async (dispatch) => {
       payload: respuesta.data,
     });
   } catch (error) {
-    console.log("Error: ", error.message);
     dispatch({
       type: ERROR,
       payload: "Error al obtener listado. Intente nuevamente",

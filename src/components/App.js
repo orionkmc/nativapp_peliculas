@@ -1,10 +1,15 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Films from "./Films/Index";
+import Layout from "../components/Layout";
 
 const App = () => (
   <BrowserRouter>
-    <Route exact path="/" component={Films} />
+    <Layout>
+      <Switch>
+        <Route exact path="/" component={Films} />
+      </Switch>
+    </Layout>
   </BrowserRouter>
 );
 
